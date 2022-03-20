@@ -1,0 +1,75 @@
+<!-- How to Make an Image Carousel Using Basic HTML, CSS, and JavaScript 
+An image carousel is a container (slideshow) of images or info that users
+ can select by clicking a button that directs them forward or backward in the slideshow. 
+ An image carousel makes a website more interactive by enhancing the user experience. -->
+
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title>Carousel</title>
+     <style>
+         .boxes {
+             width: 800px;
+             margin: 20px auto;
+             text-align: center;
+         }
+ 
+         .box {
+             height: 200px;
+         }
+ 
+         #box1 {
+             background: darkcyan;
+         }
+ 
+         #box2 {
+             background:dodgerblue;
+             display: none;
+         }
+ 
+         #box3 {
+             background: darkorange;
+             display: none;
+         }
+     </style>
+ </head>
+ <body>
+     <div class="boxes">
+         <div class="box" id="box1"></div>
+         <div class="box" id="box2"></div>
+         <div class="box" id="box3"></div>
+ 
+         <div class="controls">
+             <!--  &laquo; is used to show << in form page -->
+             <button id="prev">&laquo; Prev</button> 
+             <!-- &raquo; is used to show >> in form page -->
+             <button id="next">Next &raquo;</button>
+         </div>
+     </div>
+ 
+     <script>
+         var box = 1
+ 
+         function next() {
+             console.log("The box number is :")
+             console.log(box)
+             document.querySelector(`#box${box}`).style.display = "none"
+             box++; 
+             if(box > 3) box = 1
+             document.querySelector(`#box${box}`).style.display = "block"
+         }
+ 
+         function prev() {
+             document.querySelector(`#box${box}`).style.display = "none"
+             box--; 
+             if(box < 1) box = 3
+             document.querySelector(`#box${box}`).style.display = "block"
+         }
+ 
+         document.querySelector("#next").onclick = next
+         document.querySelector("#prev").onclick = prev
+ 
+         setInterval(next, 5000)
+     </script>
+ </body>
+ </html>
