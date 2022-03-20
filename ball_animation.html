@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball animation</title>
+    <style>
+        #box{
+            position: relative;
+            width: 800px;
+            height: 15px;
+            padding: 10px;
+            background-color: aquamarine;
+            border: 5px solid darkgray;
+        }
+        #ball{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 30px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+   <div id="box">
+       <div id="ball"></div>
+   </div>
+   <div style="margin-top:10px;">
+       <button onclick="start()">Start</button>
+       <button onclick="stop()">Stop</button>
+   </div>
+</body>
+<script>
+    var ball= document.querySelector("#ball");
+    var left = 0
+    var direction = "right"
+    var interval = setInterval(move,10)
+
+    function move() {
+        console.log("This is in move");
+        //console.log(direction);
+        if(direction === "right") {
+            //console.log("Right");
+            left += 1
+            if(left > 790) direction ="left"
+        } else {
+            //console.log("Left");
+            left -= 1
+            if(left < 1) direction = "right"
+        }
+        console.log(left);
+        ball.style.left = left + 'px';
+        
+    }
+
+            
+    function start() {
+        interval = setInterval(move,10)
+    }
+    function stop() {
+        clearInterval(interval)
+    }
+</script>
+</html>
